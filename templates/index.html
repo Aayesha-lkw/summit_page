@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI and Data Summit 2025</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        line-height: 1.6;
+        background: #f8f9fc;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    /* Floating background shapes */
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.15;
+        animation: float 8s infinite ease-in-out;
+        z-index: 0;
+    }
+    .shape1 {
+        width: 300px; height: 300px;
+        background: #1976d2;
+        top: -100px; left: -100px;
+    }
+    .shape2 {
+        width: 200px; height: 200px;
+        background: #0d47a1;
+        bottom: 50px; right: -80px;
+        animation-delay: 4s;
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(20px); }
+    }
+
+    /* Header with parallax */
+    header {
+        background: linear-gradient(135deg, rgba(13,71,161,0.95), rgba(25,118,210,0.95)), 
+                    url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1400&q=80') center/cover fixed;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    header h1 {
+        font-size: 3rem;
+        animation: fadeInDown 1s ease-out;
+    }
+    header p {
+        font-size: 1.2rem;
+        animation: fadeInUp 1.2s ease-out;
+    }
+    header img {
+    position: relative; /* keep it in the flow */
+    z-index: 10;        /* above the background */
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    }
+
+    /* Navigation */
+    nav {
+        background: white;
+        padding: 12px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 5;
+    }
+    nav a {
+        color: #0d47a1;
+        margin: 0 15px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: #1976d2;
+    }
+
+    .agenda-images {
+    display: flex;
+    gap: 10px;
+    }
+
+    .agenda-images img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #0d47a1;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s forwards;
+    }
+
+    .agenda-images img:nth-child(1) {
+    animation-delay: 0.3s;
+    }
+    .agenda-images img:nth-child(2) {
+    animation-delay: 0.6s;
+    }
+    .agenda-images img:nth-child(3) {
+    animation-delay: 0.9s;
+    }
+
+    @keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    /* Sections */
+    section {
+        padding: 40px 20px;
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        margin-top: 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        position: relative;
+        z-index: 1;
+    }
+    section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Agenda & Speakers */
+    .agenda, .speakers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+        margin-bottom: 10px;
+        color: #0d47a1;
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        background: #0d47a1;
+        color: white;
+        padding: 15px;
+        margin-top: 30px;
+        font-size: 0.9rem;
+        z-index: 1;
+        position: relative;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+        0% { opacity: 0; transform: translateY(-30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<!-- Floating shapes -->
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+
+<header>
+     <img src="/static/images/lkw_logo.jpg" alt="AI and Data Summit 2025 Logo" 
+         style="width:200px; height:auto; display:block; margin:0 auto 20px;">
+    <h1>AI and Data Summit 2025</h1>
+    <p>One-day conference exploring Future of AI </p>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#agenda">Program</a>
+    <a href="#speakers">Contributors</a>
+    <a href="#detailed-agenda">Agenda</a>  
+    <a href="#location">Location</a>
+</nav>
+
+<section id="about">
+    <h2>About the Event</h2>
+    <p>The AI and Data Summit 2025 is a one-day conference that brings together data scientists, DataOps engineers, and MLOps engineers to explore the forefront of innovation. From agentic and generative AI to breakthrough techniques, the summit provides a platform to discover emerging technologies, share expertise, and shape the future of autonomous and intelligent systems.</p>
+</section>
+
+<section id="agenda">
+    <h2>Program Pillers</h2>
+    <div class="agenda">
+        <div class="card">
+            <h3>Opening Keynote</h3>
+            <p>Emerging AI Trends Driving Innovation</p>
+        </div>
+        <div class="card">
+            <h3>Presentation Sessions</h3>
+            <p>AI Ecosystem to Innovate</p>
+        </div>
+        <div class="card">
+            <h3>Workshops</h3>
+            <p>Interactive and Practical Sessions</p>
+        </div>
+        <div class="card">
+            <h3>Fun Quizzes</h3>
+            <p>Fun Quizzes and Gifts</p>
+        </div>
+        <div class="card">
+            <h3>Panel Discussion</h3>
+            <p>The Consensus of Contraditory Opinions</p>
+        </div>
+        <div class="card">
+            <h3>Closing Remarks</h3>
+            <p>Key Takeaways and Networking</p>
+        </div>
+    </div>
+</section>
+
+<section id="speakers">
+    <h2>Contributors</h2>
+    <div class="speakers">
+        <div class="card">
+            <h3>Data Science Team</h3>
+            <p></p>
+        </div>
+        <div class="card">
+            <h3>DataOps Team</h3>
+            <p></p>
+        </div>
+        <div class="card">
+            <h3>MLOps Team</h3>
+            <p></p>
+        </div>
+    </div>
+</section>
+
+<section id="detailed-agenda" style="padding:40px 20px; background:#f8f9fa;">
+  <h2 style="text-align:center; margin-bottom:30px; font-size:2rem; color:#0d47a1;">
+    Detailed Agenda
+  </h2>
+
+  <div style="display:flex; flex-direction:column; gap:20px; max-width:900px; margin:auto;">
+
+    <!-- Opening Keynote Block -->
+    <!-- Opening Keynote Block -->
+    <div style="background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; text-align:center; max-width:900px; margin:auto;">
+    
+    <!-- Time -->
+    <div style="margin-bottom:20px;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+        09:00 – 09:15
+        </span>
+    </div>
+
+    <!-- Speakers -->
+    <div class="agenda-images" style="display:flex; justify-content:center; gap:20px; margin-bottom:20px;">
+        <div>
+        <img src="/static/images/robert.jpeg" alt="Keynote Speaker 1"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Goederle, Robert</div>
+        </div>
+        <div>
+        <img src="/static/images/manuel.jpeg" alt="Keynote Speaker 2"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Kleinknecht, Manuel</div>
+        </div>
+        <div>
+        <img src="/static/images/stefan.jpeg" alt="Keynote Speaker 3"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Hanifl, Stefan</div>
+        </div>
+    </div>
+
+    <!-- Title and Description -->
+    <h3 style="margin:0; color:#0d47a1; margin-bottom:5px;">Welcome & Opening Remarks</h3>
+    <p style="margin:0; color:#555;">Intro & objectives</p>
+    </div>
+
+    <!-- Session 1 -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          09:15 – 09:45
+        </span>
+      </div>
+      <div>
+      <img src="/static/images/julian.jpeg" alt="Data Science Team" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Amon, Julian Leander</div>
+      </div>
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Session 1: Document Extraction with LLMs</h3>
+        <p style="margin:5px 0 0; color:#555;">Using LLMs for document information extraction</p>
+      </div>
+    </div>
+
+
+<!-- Session 2 -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          09:45 – 10:15
+        </span>
+      </div>
+      <div>
+      <img src="/static/images/selma.jpeg" alt="Data Science Team" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Kahvedzic, Selma</div>
+      </div>
+      <div>
+      <img src="/static/images/adnan.jpeg" alt="Data Science Team" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Duharkic, Adnan</div>
+      </div>
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Session 2: AURA - Autonomous Unit-test Refinement Agent</h3>
+        <p style="margin:5px 0 0; color:#555;">Autonomous agent to write, execute, and self-correct unit tests</p>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          10:15 – 10:30
+        </span>
+      </div>
+      
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Quiz & Gift</h3>
+        <p style="margin:5px 0 0; color:#555;">Interactive knowledge check</p>
+      </div>
+    </div>
+
+    <!-- Coffee Break -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          10:30 – 10:45
+        </span>
+      </div>
+      
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Coffee Break</h3>
+        <p style="margin:5px 0 0; color:#555;">Networking & refreshment</p>
+      </div>
+    </div>
+
+
+<!-- Session 3 -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          10:45 – 11:15
+        </span>
+      </div>
+      <div>
+      <img src="/static/images/iban.jpg" alt="Data Science Team" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Iban Tanovic</div>
+      </div>
+      <div>
+      <img src="/static/images/lukas.jpeg" alt="Data Science Team" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Langegger, Lukas</div>
+      </div>
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Session 3: AI Tool to derive Democratization and Automation</h3>
+        <p style="margin:5px 0 0; color:#555;">Chat interface to interact with LLM, Agents, and MCP Servers</p>
+      </div>
+    </div>    
+
+    <!-- Session 4 -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          11:15 – 11:45
+        </span>
+      </div>
+      <div>
+      <img src="/static/images/gunter.jpeg" alt="Data Science Team" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Hackl, Guenther</div>
+      </div>
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Session 4: FastMCP and FastAPI</h3>
+        <p style="margin:5px 0 0; color:#555;">Add an MCP server to FastAPI application</p>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          11:45 – 12:00
+        </span>
+      </div>
+      
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Quiz & Gift</h3>
+        <p style="margin:5px 0 0; color:#555;">Interactive knowledge check</p>
+      </div>
+    </div>
+
+    <!-- Lunch Break -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          12:00 – 13:00
+        </span>
+      </div>
+      
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Lunch Break</h3>
+        <p style="margin:5px 0 0; color:#555;">Buffet lunch & informal networking</p>
+      </div>
+    </div>
+
+    <!-- Interactive Activity -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          13:15 – 14:00
+        </span>
+      </div>
+      <img src="/static/images/phillip.jpeg" alt="Activity" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Satlawa, Philipp</div>
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Interactive Activity</h3>
+        <p style="margin:5px 0 0; color:#555;">Best Practices when Designing Agents</p>
+      </div>
+    </div>
+
+    <!-- Workshop -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          14:00 – 15:00
+        </span>
+      </div>
+      <img src="/static/images/aayesha.jpeg" alt="Workshop" style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+      <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Aayesha</div>
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Workshop: Multi-Agentic Chatbot</h3>
+        <p style="margin:5px 0 0; color:#555;">Develop a Chatbot in a Multi-Agent Setting</p>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          15:00 – 15:15
+        </span>
+      </div>
+      
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Quiz & Gift</h3>
+        <p style="margin:5px 0 0; color:#555;">Engaging quiz with fun prizes</p>
+      </div>
+    </div>
+
+    <!-- Coffee Break -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          15:15 – 15:30
+        </span>
+      </div>
+      
+      <div>
+        <h3 style="margin:0; color:#0d47a1;">Coffee Break</h3>
+        <p style="margin:5px 0 0; color:#555;">Networking & refreshment</p>
+      </div>
+    </div>
+
+    <!-- Panel Discussion -->
+    <div style="background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; text-align:center; max-width:900px; margin:auto;">
+    
+    <!-- Time -->
+    <div style="margin-bottom:20px;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+        15:30 – 16:30
+        </span>
+    </div>
+
+    <!-- Speakers -->
+    <div class="agenda-images" style="display:flex; justify-content:center; gap:20px; margin-bottom:20px;">
+        <div>
+        <img src="/static/images/manuel.jpeg" alt="Keynote Speaker 1"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Kleinknecht, Manuel</div>
+        </div>
+        <div>
+        <img src="/static/images/stefan.jpeg" alt="Keynote Speaker 2"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Hanifl, Stefan</div>
+        </div>
+        <div>
+        <img src="/static/images/martina.jpeg" alt="Keynote Speaker 3"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Glogowatz, Martina</div>
+        </div>
+        <div>
+        <img src="/static/images/gunter.jpeg" alt="Keynote Speaker 3"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Hackl, Guenther</div>
+        </div>
+        <div>
+        <img src="/static/images/julian.jpeg" alt="Keynote Speaker 3"
+            style="width:80px; height:80px; object-fit:cover; border-radius:50%; border:3px solid #0d47a1;">
+        <div style="margin-top:5px; font-size:0.85rem; color:#0d47a1;">Amon, Julian Leander</div>
+        </div>
+    </div>
+
+    <!-- Title and Description -->
+    <h3 style="margin:0; color:#0d47a1; margin-bottom:5px;">Panel Discussion / Closing Session</h3>
+    <p style="margin:0; color:#555;">Next steps & what happens next</p>
+    </div>
+    <!-- Networking -->
+    <div style="display:flex; align-items:center; background:white; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:20px; gap:20px;">
+      <div style="min-width:120px; text-align:center;">
+        <span style="display:inline-block; background:#0d47a1; color:white; padding:6px 14px; border-radius:12px; font-size:0.85rem; font-weight:600;">
+          16:30 – 17:00
+        </span>
+      </div>
+      
+        <h3 style="margin:0; color:#0d47a1;">Networking / Informal Discussion</h3>
+        <p style="margin:5px 0 0; color:#555;">Wrap-up & informal connections</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="location">
+    <h2>Location</h2>
+    <p>Innovation Lab</p>
+    <p>LKW Walter at Wiener Neudorf, Austria</p>
+    <p>Date: 20th October 2025</p>
+</section>
+
+<footer>
+    <p>AI and Data Summit 2025@LKW Walter</p>
+</footer>
+
+<script>
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+        const triggerBottom = window.innerHeight * 0.85;
+        sections.forEach(sec => {
+            const boxTop = sec.getBoundingClientRect().top;
+            if (boxTop < triggerBottom) {
+                sec.classList.add('visible');
+            }
+        });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
