@@ -13,6 +13,3 @@ templates = Jinja2Templates(directory="templates")
 async def home(request: Request):
     # Pass 'request' to the template (required by FastAPI)
     return templates.TemplateResponse("index.html", {"request": request})
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8080, log_level="info")
